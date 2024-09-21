@@ -1,20 +1,13 @@
 import React from "react";
 import axios from "axios";
-import {
-  Breadcrumbs,
-  Link,
-  Typography,
-  Alert,
-  Grid,
-  Tooltip,
-} from "@mui/material";
+import { Breadcrumbs, Link, Typography, Alert, Grid } from "@mui/material";
 import App from "../App.tsx";
-import { EntityModelModule } from "../api/entityModelModule.ts";
+import { EntityModelStudent } from "../api/index";
 import { API_ENDPOINT } from "../config";
 import AddStudent from "./AddStudent";
 
 function Students() {
-  const [students, setStudents] = React.useState<EntityModelModule[]>([]);
+  const [students, setStudents] = React.useState<EntityModelStudent[]>([]);
   const [error, setError] = React.useState<string>();
 
   React.useEffect(() => {

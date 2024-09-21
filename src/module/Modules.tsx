@@ -1,13 +1,6 @@
 import React from "react";
 import axios from "axios";
-import {
-  Breadcrumbs,
-  Link,
-  Typography,
-  Alert,
-  Grid,
-  Tooltip,
-} from "@mui/material";
+import { Breadcrumbs, Link, Typography, Alert, Grid } from "@mui/material";
 import App from "../App.tsx";
 import { EntityModelModule } from "../api/entityModelModule.ts";
 import { API_ENDPOINT } from "../config";

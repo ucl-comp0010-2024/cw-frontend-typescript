@@ -7,6 +7,7 @@ import {
   FormControlLabel,
   Button,
   Typography,
+  Alert,
 } from "@mui/material";
 import { EntityModelModule } from "../api/entityModelModule.ts";
 import { API_ENDPOINT } from "../config";
@@ -18,7 +19,7 @@ function AddModule(props: { update: Function }) {
   function request() {
     axios
       .post(`${API_ENDPOINT}/modules`, module)
-      .then((response) => {
+      .then(() => {
         props.update();
       })
       .catch((response) => {
@@ -57,6 +58,8 @@ function AddModule(props: { update: Function }) {
       <br />
       <Button onClick={request}>Add/Update</Button>
       <br />
+      <br />
+      {error && <Alert color="error">{error}</Alert>}
     </Paper>
   );
 }

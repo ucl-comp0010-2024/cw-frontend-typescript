@@ -1,13 +1,6 @@
 import React from "react";
 import axios from "axios";
-import {
-  Breadcrumbs,
-  Link,
-  Typography,
-  Alert,
-  Grid,
-  Tooltip,
-} from "@mui/material";
+import { Breadcrumbs, Link, Typography, Alert, Grid } from "@mui/material";
 import App from "../App.tsx";
 import {
   EntityModelGrade,
@@ -24,11 +17,11 @@ function GradeRow(props: { grade: EntityModelGrade }) {
 
   React.useEffect(() => {
     axios
-      .get(grade._links.module.href)
+      .get(grade._links!.module!.href!)
       .then((response) => setModule(response.data));
 
     axios
-      .get(grade._links.student.href)
+      .get(grade._links!.student!.href!)
       .then((response) => setStudent(response.data));
   }, [grade]);
 

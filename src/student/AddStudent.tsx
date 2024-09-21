@@ -1,13 +1,6 @@
 import React from "react";
 import axios from "axios";
-import {
-  Paper,
-  TextField,
-  Switch,
-  FormControlLabel,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Paper, TextField, Button, Typography, Alert } from "@mui/material";
 import { EntityModelStudent } from "../api/entityModelStudent.ts";
 import { API_ENDPOINT } from "../config";
 
@@ -18,7 +11,7 @@ function AddStudent(props: { update: Function }) {
   function request() {
     axios
       .post(`${API_ENDPOINT}/students`, student)
-      .then((response) => {
+      .then(() => {
         props.update();
       })
       .catch((response) => {
@@ -33,7 +26,7 @@ function AddStudent(props: { update: Function }) {
       <TextField
         label="Student ID"
         onChange={(e) => {
-          setStudent({ ...student, id: e.target.value });
+          setStudent({ ...student, id: Number(e.target.value) });
         }}
       />
       <TextField
@@ -66,6 +59,8 @@ function AddStudent(props: { update: Function }) {
       <br />
       <Button onClick={request}>Add/Update</Button>
       <br />
+      <br />
+      {error && <Alert color="error">{error}</Alert>}
     </Paper>
   );
 }

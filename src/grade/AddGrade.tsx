@@ -2,17 +2,15 @@ import React from "react";
 import axios from "axios";
 import {
   Paper,
-  Switch,
-  FormControlLabel,
   Button,
   Typography,
   Select,
   MenuItem,
   TextField,
+  Alert,
 } from "@mui/material";
 import {
   AddGradeBody,
-  EntityModelGrade,
   EntityModelStudent,
   EntityModelModule,
 } from "../api/index";
@@ -41,7 +39,7 @@ function AddGrade(props: { update: Function }) {
   function request() {
     axios
       .post(`${API_ENDPOINT}/grades/addGrade`, grade)
-      .then((response) => {
+      .then(() => {
         props.update();
       })
       .catch((response) => {
@@ -95,6 +93,8 @@ function AddGrade(props: { update: Function }) {
       <br />
       <Button onClick={request}>Add</Button>
       <br />
+      <br />
+      {error && <Alert color="error">{error}</Alert>}
     </Paper>
   );
 }
