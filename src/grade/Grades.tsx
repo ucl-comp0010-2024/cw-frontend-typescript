@@ -33,7 +33,7 @@ function GradeRow(props: { grade: EntityModelGrade }) {
   }, [grade]);
 
   return (
-    <Grid container style={{ padding: "10px 0" }}>
+    <Grid key={grade.id} container style={{ padding: "10px 0" }}>
       <Grid item xs={4}>
         {student && `${student.firstName} ${student.lastName} (${student.id})`}
       </Grid>
